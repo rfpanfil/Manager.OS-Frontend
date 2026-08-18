@@ -23,7 +23,11 @@ export const API_BASE = (() => {
     // return LOCAL_IP;
   }
 
-  // 💻 CASO 2: NAVEGADOR (Chrome, Firefox, Edge, Safari)
+  // 🟢 CASO 2: NAVEGADOR (Chrome, Firefox, Edge, Safari)
+  // Se estiver na Vercel (Produção), usa a variável de ambiente VITE_API_BASE
+  if (import.meta.env.VITE_API_BASE) {
+    return import.meta.env.VITE_API_BASE;
+  }
   // Retorna vazio ("") para usar caminho relativo.
   // Isso resolve o problema de Mixed Content e CORS automaticamente.
   return "";
