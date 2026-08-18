@@ -42,6 +42,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setAuthHeaders({ 
         'X-User-Id': user.id, 
         'X-Role': user.role,
+        'Authorization': `Bearer ${token}`
       });
       reloadFromAPI();
     }
