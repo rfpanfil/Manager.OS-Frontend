@@ -46,7 +46,7 @@ const Login: React.FC = () => {
           
           {/* AQUI ESTÁ A MUDANÇA: font-nunito e font-bold */}
           <h2 className="mt-6 text-3xl font-bold font-nunito text-gray-900 dark:text-white">
-            loop.OS Manager
+            Manager.OS
           </h2>
           
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Seja Bem-vindo(a)!</p>

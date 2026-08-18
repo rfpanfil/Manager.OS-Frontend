@@ -77,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       `}>
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-700">
           {!isCollapsed && (
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent truncate">loop.OS Manager</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent truncate">Manager.OS</span>
           )}
           {isCollapsed && <span className="mx-auto text-xl font-bold text-blue-600">L</span>}
           <button onClick={() => setIsCollapsed(!isCollapsed)} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 hidden lg:block">
