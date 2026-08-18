@@ -216,6 +216,13 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         };
 
         const res = await fetchWithTimeout(url, { method: 'GET', headers }, 3000);
+        if (res.status === 401) {
+          // Token expirado ou invlido
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          window.location.href = '/login';
+          return false;
+        }
         const ok = res.ok;
         pingCacheRef.current = { ok, at: now };
         return ok;

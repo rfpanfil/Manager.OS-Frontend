@@ -104,16 +104,22 @@ export const OfflineProvider: React.FC<{ children: React.ReactNode }> = ({ child
       // Usa parâmetro _ping para o backend responder rápido (se otimizado)
       const url = `${API_BASE}/api/os?_ping=${now}`;
       
+      const token = localStorage.getItem('token');
+      const headers: Record<string, string> = {
+        Accept: 'application/json',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        Pragma: 'no-cache',
+        Expires: '0',
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const res = await fetchWithTimeout(
         url,
         {
           method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            Pragma: 'no-cache',
-            Expires: '0',
-          },
+          headers,
         },
         3000 // Timeout de 3s (equilíbrio entre rede móvel lenta e UX)
       );
