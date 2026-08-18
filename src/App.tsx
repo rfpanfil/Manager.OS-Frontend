@@ -1,6 +1,6 @@
 // File: App.tsx
 import React, { useEffect } from 'react';
-import './style.css';
+import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { DataProvider } from './contexts/DataContext';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
