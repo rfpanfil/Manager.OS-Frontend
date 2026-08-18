@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import './style.css' // <--- ESSENCIAL PARA O TAILWIND FUNCIONAR
+import './index.css' // <--- ESSENCIAL PARA O TAILWIND FUNCIONAR
 
 const rootElement = document.getElementById('root');
 
