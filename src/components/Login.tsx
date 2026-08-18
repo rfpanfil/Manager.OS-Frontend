@@ -103,20 +103,11 @@ const Login: React.FC = () => {
           </div>
 
           {/* Dicas de login para facilitar testes (mock) */}
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-            <p>Para acessar o sistema, entre em contato com o COG via:</p>
-            <p>E-mail: cog@loopservices.com.br</p>
-            <p>
-              Whatsapp:
-              <a
-                href="https://api.whatsapp.com/send/?phone=5541998330048"
-                target="_blank" // Abre o link em uma nova aba
-                rel="noopener noreferrer" // Recomendado para segurança ao usar target="_blank"
-                className="ml-1 text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 font-medium" // Estilos Tailwind para o link
-              >
-                +55 (41) 99833-0048
-              </a>
-            </p>
+          <div className="mt-6 text-center text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <p className="font-semibold mb-2 text-gray-700 dark:text-gray-300">Acesso de Demonstração:</p>
+            <p className="mb-1">Admin: <span className="text-blue-600 dark:text-blue-400 font-medium">admin@demo.com</span></p>
+            <p className="mb-1">Operador: <span className="text-blue-600 dark:text-blue-400 font-medium">operador@demo.com</span></p>
+            <p className="mt-2">Senha universal: <span className="text-blue-600 dark:text-blue-400 font-medium">Demo@2026</span></p>
           </div>
         </form>
       </div>
