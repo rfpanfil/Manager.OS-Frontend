@@ -1,0 +1,48 @@
+<!-- File: index.html -->
+<!-- Este é o arquivo HTML principal que carrega a aplicação React. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700;6..12,800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Loop.OS Manager</title>
+    
+    <!-- Carrega o Tailwind CSS para estilização rápida e responsiva. -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- 
+      IMPORT MAP: Define como os módulos JavaScript são importados.
+      Isso permite usar nomes de pacotes (ex: 'react') em vez de URLs completas nos arquivos .tsx,
+      similar a um ambiente com Node.js/npm, mas diretamente no navegador.
+    -->
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "react-dom/": "https://aistudiocdn.com/react-dom@^18.2.0/",
+          "react": "https://aistudiocdn.com/react@^18.2.0",
+          "react/": "https://aistudiocdn.com/react@^18.2.0/",
+          "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+          "jspdf": "https://aistudiocdn.com/jspdf@^3.0.3",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+          "jspdf-autotable": "https://aistudiocdn.com/jspdf-autotable@^5.0.2",
+          "react-beautiful-dnd": "https://aistudiocdn.com/react-beautiful-dnd@^13.1.1",
+          "jszip": "https://aistudiocdn.com/jszip@^3.10.1"
+        }
+      }
+    </script> -->
+  <!--<link rel="stylesheet" href="/index.css">-->
+</head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <!-- Este é o elemento "raiz" onde toda a aplicação React será injetada e renderizada. -->
+    <div id="root"></div>
+    
+    <!-- Carrega o ponto de entrada da aplicação React. 'type="module"' é essencial para usar importações ES6. -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

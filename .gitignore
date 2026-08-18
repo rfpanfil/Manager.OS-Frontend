@@ -1,0 +1,91 @@
+#arquivo .gitignore
+
+# --- LOGS ---
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- NODE / FRONTEND ---
+node_modules
+dist
+dist-ssr
+coverage
+
+# --- MOBILE (ANDROID / CAPACITOR) - NOVO E CRÍTICO ---
+# Ignora a pasta de build do Android (arquivos temporários gigantes)
+android/app/build/
+android/.gradle/
+android/build/
+
+# Ignora configurações locais do SDK (caminho do seu computador)
+local.properties
+
+# Ignora os executáveis finais (APK e AAB) para não pesar o repo
+*.apk
+*.aab
+*.ap_
+android/app/release/
+
+# Cache e arquivos de sistema do Android Studio
+.navigation/
+captures/
+.cxx/
+*.jks
+*.keystore
+
+# Arquivos temporários do Capacitor
+capacitor.config.json.timestamp
+capacitor.config.ts.timestamp
+
+# --- PYTHON / BACKEND ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env/
+
+# --- BANCO DE DADOS ---
+*.db
+*.sqlite3
+*.db-journal
+*.db-wal
+attachments/data/senha banco loopos.txt
+attachments/data/Documentação de Escopo Técnico - Loop.OS.docx
+attachments/data/Documentação de Escopo Técnico - Loop.OS.pdf
+
+# --- ARQUIVOS DE AMBIENTE ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- UPLOADS E DADOS ---
+attachments/images/*
+!attachments/images/.gitkeep
+attachments/data/*
+!attachments/data/.gitkeep
+
+# --- RELATÓRIOS GERADOS (PDFs locais) ---
+*.pdf
+
+# --- IDE / EDITOR ---
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- SISTEMA OPERACIONAL ---
+Thumbs.db
+Desktop.ini
