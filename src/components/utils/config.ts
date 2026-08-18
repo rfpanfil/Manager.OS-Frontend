@@ -24,7 +24,10 @@ export const API_BASE = (() => {
   }
 
   // 🟢 CASO 2: NAVEGADOR (Chrome, Firefox, Edge, Safari)
-  // Se estiver na Vercel (Produção), usa a variável de ambiente VITE_API_BASE
+  // Se estiver na Vercel (Produção), usa a variável de ambiente VITE_API_URL ou VITE_API_BASE
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
   if (import.meta.env.VITE_API_BASE) {
     return import.meta.env.VITE_API_BASE;
   }
