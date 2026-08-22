@@ -5,13 +5,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700;6..12,800&display=swap"
       rel="stylesheet"
     />
-    <title>Manager.OS</title>
+    <title>Loop.OS Manager</title>
     
     <!-- Carrega o Tailwind CSS para estilização rápida e responsiva. -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
@@ -43,6 +55,6 @@
     <div id="root"></div>
     
     <!-- Carrega o ponto de entrada da aplicação React. 'type="module"' é essencial para usar importações ES6. -->
-    <script type="module" src="/src/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
