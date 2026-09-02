@@ -46,10 +46,10 @@ const Login: React.FC = () => {
           
           {/* AQUI ESTÁ A MUDANÇA: font-nunito e font-bold */}
           <h2 className="mt-6 text-3xl font-bold font-nunito text-gray-900 dark:text-white">
-            loop.OS Manager
+            Manager.OS
           </h2>
           
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Seja Bem-vindo(a)!</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Plataforma SaaS de Manutenção</p>
         </div>
 
         {/* Formulário de login */}
@@ -103,20 +103,18 @@ const Login: React.FC = () => {
           </div>
 
           {/* Dicas de login para facilitar testes (mock) */}
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-            <p>Para acessar o sistema, entre em contato com o COG via:</p>
-            <p>E-mail: cog@loopservices.com.br</p>
-            <p>
-              Whatsapp:
-              <a
-                href="https://api.whatsapp.com/send/?phone=5541998330048"
-                target="_blank" // Abre o link em uma nova aba
-                rel="noopener noreferrer" // Recomendado para segurança ao usar target="_blank"
-                className="ml-1 text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 font-medium" // Estilos Tailwind para o link
-              >
-                +55 (41) 99833-0048
-              </a>
+                    {/* MUDANÇA: BOTÃO DE CREDENCIAIS DE DEMONSTRAÇÃO */}
+          <div className="mt-6 border-t border-gray-700 pt-6">
+            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+              Ambiente de Demonstração (Portfólio)
             </p>
+            <button
+              type="button"
+              onClick={() => { setUsername('admin@demo.com'); setPassword('Demo@2026'); }}
+              className="w-full flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Preencher Credenciais de Teste
+            </button>
           </div>
         </form>
       </div>
@@ -125,3 +123,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
