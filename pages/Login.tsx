@@ -46,7 +46,7 @@ const Login: React.FC = () => {
           
           {/* AQUI ESTÁ A MUDANÇA: font-nunito e font-bold */}
           <h2 className="mt-6 text-3xl font-bold font-nunito text-gray-900 dark:text-white">
-            Manager.OS
+            OS.Manager
           </h2>
           
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Plataforma SaaS de Manutenção</p>
@@ -123,5 +123,6 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
 
 
