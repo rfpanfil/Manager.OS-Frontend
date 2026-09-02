@@ -110,7 +110,7 @@ const Login: React.FC = () => {
             </p>
             <button
               type="button"
-              onClick={() => { setUsername('admin@demo.com'); setPassword('Demo@2026'); }}
+              onClick={() => { setIdentifier('admin@demo.com'); setPassword('Demo@2026'); }}
               className="w-full flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Preencher Credenciais de Teste
@@ -123,4 +123,5 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
 
