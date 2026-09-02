@@ -136,12 +136,12 @@ const MaintenancePlans: React.FC = () => {
     try {
         const doc = generateFullMaintenancePDF(
             taskTemplates, 
-            "Biblioteca Padrão de Manutenção (Manager.OS)", 
+            "Biblioteca Padrão de Manutenção (OS.Manager)", 
             "Todas as tarefas modelo",
             false
         );
         const pdfBase64 = doc.output('datauristring').split(',')[1];
-        await saveFile(`Biblioteca_Manager.OS.pdf`, pdfBase64, 'application/pdf');
+        await saveFile(`Biblioteca_OS.Manager.pdf`, pdfBase64, 'application/pdf');
     } catch(e) { 
         console.error(e); 
         alert("Erro ao gerar PDF da biblioteca."); 
@@ -438,4 +438,5 @@ const MaintenancePlans: React.FC = () => {
 };
 
 export default MaintenancePlans;
+
 
