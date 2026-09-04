@@ -149,11 +149,11 @@ const OSForm: React.FC<Props> = ({ isOpen, onClose, initialData }) => {
 
     const assetOptions = useMemo(() => {
         if (!currentPlant) return [];
-        const physicalAssets = currentPlant.assets || [];
+        const physicalAssets = (currentPlant.assets || []).map((a: any) => typeof a === 'string' ? a : (a.type || a.name || a.id || String(a)));
         const tasks = getPlantTasks(currentPlant.id);
-        const planCategories = tasks.map((p: any) => p.asset_category);
-        const uniqueAssets = Array.from(new Set([...physicalAssets, ...planCategories])).sort();
-        return uniqueAssets.map(a => ({ label: a, value: a }));
+        const planCategories = tasks.map((p: any) => p.asset_category).filter(Boolean);
+        const uniqueAssets = Array.from(new Set([...physicalAssets, ...planCategories])).filter(Boolean).sort();
+        return uniqueAssets.map(a => ({ label: String(a), value: String(a) }));
     }, [currentPlant, maintenancePlans]); 
 
     const taskOptions = useMemo(() => {
