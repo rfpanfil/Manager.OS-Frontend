@@ -4,3 +4,6 @@ dist
 .env.*
 !.env.example
 android/.idea/
+
+# Guia Secreto
+MEU_GUIA_DE_TESTES.md

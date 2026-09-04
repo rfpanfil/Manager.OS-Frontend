@@ -63,3 +63,25 @@ A segurança foi implementada seguindo as melhores práticas do mercado:
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
+
+## 🧪 Testes Automatizados E2E (Playwright)
+
+Este projeto conta com uma suíte de testes ponta a ponta (E2E) construída com **Playwright**, que simula a interação de um usuário real no navegador.
+
+### Como rodar os testes localmente
+
+1. Navegue até a pasta de testes:
+   `ash
+   cd e2e-tests
+   `
+2. Instale as dependências e navegadores (primeira vez apenas):
+   `ash
+   npm install
+   npx playwright install chromium
+   `
+3. Execute a suíte de testes:
+   `ash
+   npm run test:e2e
+   `
+
+> **Nota:** Os testes já estão configurados para acessar a URL de produção na Vercel e utilizam um script de setup (uth.setup.ts) para realizar o login automaticamente antes de varrer os módulos.
