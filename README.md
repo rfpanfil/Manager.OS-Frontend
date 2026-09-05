@@ -21,7 +21,7 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 **Frontend**
 - **Framework:** React 18 + Vite
 - **Gestão de Estado & Fetching:** Context API / Hooks customizados focados em re-renderização otimizada
-- **Integrações Nativas:** Uso de IndexedDB para operações modais offline-first e @capacitor/camera para captura fotográfica em campo
+- **Integrações Nativas:** Uso de IndexedDB para operações modais offline-first e `@capacitor/camera` para captura fotográfica em campo
 - **Interatividade:** Drag & Drop dinâmico (Kanban) e virtualização de listas DOM (Calendário de 52 Semanas)
 - **Deploy:** Vercel
 
@@ -38,6 +38,7 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 
 ## 🏗 Arquitetura e Engenharia
 > 🔒 **Nota de Privacidade:** O código-fonte do Backend (API em FastAPI) e a infraestrutura de banco de dados encontram-se em um repositório **privado** por diretrizes de segurança e proteção de propriedade intelectual. Toda a arquitetura e governança descritas neste documento referem-se ao motor que opera ativamente em produção na nuvem para alimentar esta interface.
+
 - **Backend (Python/FastAPI):** Arquitetura baseada em microsserviços lógicos, preparada para alta concorrência. Utiliza SQLAlchemy com connection pooling (`pool_recycle`) otimizado para lidar com conexões persistentes no PostgreSQL serverless (Neon.tech).
 - **Frontend (React):** Foco massivo em UX para uso em chãos de fábrica (tablets/desktops). Emprega Drag & Drop dinâmico, captura de mídia avançada e execução de modais stateful.
 
@@ -64,25 +65,22 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 - Instância PostgreSQL (Local ou Cloud)
 
 **1. Inicializando a API (Backend):**
-`ash
+```bash
 cd backend
 python -m venv venv
-# Ative o ambiente virtual (Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate)
+# Ative o ambiente virtual (Windows: venv\Scriptsctivate | Mac/Linux: source venv/bin/activate)
 pip install -r requirements.txt
 # Crie um arquivo .env baseado nas variáveis necessárias (DATABASE_URL, SECRET_KEY, etc)
 uvicorn main:app --reload
-`
+```
 
 **2. Inicializando a Aplicação (Frontend):**
-`ash
+```bash
 cd frontend
 npm install
 # Configure o .env local apontando para o backend (ex: VITE_API_URL=http://localhost:8000)
 npm run dev
-`
+```
 
 ---
 *Projeto proprietário - Portfólio de Engenharia de Software.*
-
-
-
