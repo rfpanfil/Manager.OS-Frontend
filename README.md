@@ -16,6 +16,26 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 - **Operador:** `operador@demo.com` / `Demo@2026`
 - **Visualizador:** `viewer@demo.com` / `Demo@2026`
 
+## 🛠️ Stack Tecnológico
+
+**Frontend**
+- **Framework:** React 18 + Vite
+- **Gestão de Estado & Fetching:** Context API / Hooks customizados focados em re-renderização otimizada
+- **Integrações Nativas:** Uso de IndexedDB para operações modais offline-first e @capacitor/camera para captura fotográfica em campo
+- **Interatividade:** Drag & Drop dinâmico (Kanban) e virtualização de listas DOM (Calendário de 52 Semanas)
+- **Deploy:** Vercel
+
+**Backend**
+- **Framework:** Python + FastAPI (Alta performance e assíncrono)
+- **Banco de Dados:** PostgreSQL Serverless (Hospedado na Neon.tech)
+- **ORM & Pooling:** SQLAlchemy com gestão avançada de Connection Pooling
+- **Segurança:** JWT, RBAC granular e bloqueio de rotas via dependências rígidas
+
+**DevOps & Automação de Qualidade (QA)**
+- **Testes E2E:** Playwright (Validação cega por acessibilidade simulando mecânicos e gestores)
+- **Infraestrutura:** Render.com (API) e Vercel (Front)
+- **Conteinerização:** Docker Ready
+
 ## 🏗 Arquitetura e Engenharia
 - **Backend (Python/FastAPI):** Arquitetura baseada em microsserviços lógicos, preparada para alta concorrência. Utiliza SQLAlchemy com connection pooling (`pool_recycle`) otimizado para lidar com conexões persistentes no PostgreSQL serverless (Neon.tech).
 - **Frontend (React):** Foco massivo em UX para uso em chãos de fábrica (tablets/desktops). Emprega Drag & Drop dinâmico, captura de mídia avançada e execução de modais stateful.
@@ -37,3 +57,4 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 
 ---
 *Projeto proprietário - Portfólio de Engenharia de Software.*
+
