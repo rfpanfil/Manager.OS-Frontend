@@ -1,18 +1,14 @@
-# OS.Manager
+# OS.Manager 🏭
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/License-Proprietary-red.svg)
+![Playwright](https://img.shields.io/badge/Playwright-Tested-2EAD33?logo=playwright&logoColor=white)
 
-**OS.Manager** é uma solução profissional focada em ordens de serviço, manutenção preditiva e plantas industriais.
+**OS.Manager** é uma plataforma industrial para gestão de ordens de serviço, manutenção preditiva e orquestração de plantas (Usinas e Centros de Distribuição).
 
 ## 🧪 Ambiente de Demonstração
-
-Para facilitar a avaliação, o sistema conta com dados fictícios e um banco de dados de demonstração.
-
 Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app](https://manager-os-frontend.vercel.app)**
 
 🔐 **Credenciais de Acesso (Mock):**
@@ -20,68 +16,24 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 - **Operador:** `operador@demo.com` / `Demo@2026`
 - **Visualizador:** `viewer@demo.com` / `Demo@2026`
 
-> **Nota:** Para evitar conflitos, os dados do banco de demonstração são **resetados automaticamente a cada 6 horas**. Sinta-se à vontade para explorar.
+## 🏗 Arquitetura e Engenharia
+- **Backend (Python/FastAPI):** Arquitetura baseada em microsserviços lógicos, preparada para alta concorrência. Utiliza SQLAlchemy com connection pooling (`pool_recycle`) otimizado para lidar com conexões persistentes no PostgreSQL serverless (Neon.tech).
+- **Frontend (React):** Foco massivo em UX para uso em chãos de fábrica (tablets/desktops). Emprega Drag & Drop dinâmico, captura de mídia avançada e execução de modais stateful.
 
-## 🏗️ Arquitetura
+## 🛡️ Segurança e Governança (Zero Trust)
+- **Matriz RBAC Granular:** Controle de acesso baseado em funções. Operadores não podem ver telas de faturamento; Visualizadores não possuem permissão de escrita (POST/PUT/DELETE bloqueados diretamente na injeção de dependência da API).
+- **Proteção de Rotas:** O projeto passou por varredura AST (Abstract Syntax Tree) para garantir que 100% das rotas destrutivas contenham os bloqueios de segurança, mitigando riscos de SSRF e Path Traversal.
+- **SaaS Switcher Seguro:** O isolamento Multi-Tenant garante que usinas diferentes operem no mesmo banco de dados relacional sem nenhum risco de cruzamento de informações.
 
-O OS.Manager utiliza uma separação estrita de camadas (Layered Architecture):
+## 🏆 Desafios Técnicos Vencidos
+1. **Gerenciamento de Estado no Kanban:** Construir um board Kanban de alta performance em React exigiu otimizações rigorosas de re-renderização. A comunicação com a API ao arrastar um card é feita de forma assíncrona (Optimistic UI), mantendo a interface instantânea para o técnico de manutenção.
+2. **Grid de 52 Semanas (Render Performance):** Renderizar um calendário anual completo com milhares de células DOM ativas sem travar a thread principal do navegador exigiu virtualização e memorização estruturada (`useMemo`/`useCallback`).
+3. **Automação de Testes Robustos (E2E):** O ecossistema inteiro é validado por robôs do Playwright que navegam pelas rotas simulando fluxos vitais (criação de OS, manipulação de Kanban), impedindo falhas em novas implementações.
 
-- **Frontend:** React estruturado em componentes com Hooks e Context API robustos.
-- **Backend:** FastAPI modular. As rotas HTTP servem apenas como "portas" de entrada, delegando toda a lógica de negócio à camada de Serviços (Domain).
-- **Banco de Dados:** PostgreSQL hospedado.
+## 🎯 Módulos Principais
+- **Painel Kanban:** Gestão de OS em tempo real com filtros por usina e técnico.
+- **Calendário Preditivo:** Visão de 52 semanas e operações em lote.
+- **Planos de Manutenção:** Geração em cascata para padronização de serviços.
 
-## 🔒 Segurança em Primeiro Lugar (Zero Trust)
-
-A segurança foi implementada seguindo as melhores práticas do mercado:
-- **Gestão de Segredos:** Ausência total de chaves e variáveis confidenciais versionadas.
-- **Bcrypt:** Senhas fortemente armazenadas com salts aleatórios.
-- **Proteção IDOR:** Validação centralizada e RLS (Row-Level Security) equivalente via código, garantindo que o usuário só atue sobre dados próprios.
-- **Security Middleware:** Prevenção de ataques via Rate Limiting, CORS rigoroso e Security Headers contra *MIME Sniffing* e *Clickjacking*.
-
-## 🚀 Como Rodar Localmente (Frontend)
-
-1. **Clone o repositório:**
-   `ash
-   git clone https://github.com/rfpanfil/OS.Manager-Frontend.git
-   cd OS.Manager-Frontend
-   `
-
-2. **Instale as dependências:**
-   `ash
-   npm install
-   `
-
-3. **Inicie o servidor de desenvolvimento:**
-   `ash
-   npm run dev
-   `
-   O frontend estará disponível em http://localhost:3000.
-
-*(Nota: O backend de produção deste projeto possui código privado para proteger a lógica de negócios. O frontend consome a API de demonstração na nuvem).*
-
-## 📄 Licença
-
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
-
-
-## 🧪 Testes Automatizados E2E (Playwright)
-
-Este projeto conta com uma suíte de testes ponta a ponta (E2E) construída com **Playwright**, que simula a interação de um usuário real no navegador.
-
-### Como rodar os testes localmente
-
-1. Navegue até a pasta de testes:
-   `ash
-   cd e2e-tests
-   `
-2. Instale as dependências e navegadores (primeira vez apenas):
-   `ash
-   npm install
-   npx playwright install chromium
-   `
-3. Execute a suíte de testes:
-   `ash
-   npm run test:e2e
-   `
-
-> **Nota:** Os testes já estão configurados para acessar a URL de produção na Vercel e utilizam um script de setup (uth.setup.ts) para realizar o login automaticamente antes de varrer os módulos.
+---
+*Projeto proprietário - Portfólio de Engenharia de Software.*
