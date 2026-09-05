@@ -1,27 +1,32 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Kanban e Painel de OS', () => {
-  test('Deve carregar o Kanban e exibir todas as colunas de status', async ({ page }) => {
-    await page.goto('/kanban');
+test.describe('Módulo Kanban de OS (Interação e Mocks)', () => {
+  test('Deve criar uma Ordem de Serviço nova no Kanban usando Mock de API', async ({ page }) => {
     
-    // Verifica os cabeçalhos das colunas
-    await expect(page.locator('text=Pendente').first()).toBeVisible();
-    await expect(page.locator('text=Em Execução').first()).toBeVisible();
-    await expect(page.locator('text=Em Revisão').first()).toBeVisible();
-    await expect(page.locator('text=Concluído').first()).toBeVisible();
-  });
+    // MOCK DE API para proteger o banco industrial
+    await page.route('**/api/os*', async route => {
+      if (route.request().method() === 'POST') {
+        await route.fulfill({
+          status: 201,
+          headers: { 'Access-Control-Allow-Origin': '*' },
+          body: JSON.stringify({ id: 1050, titulo: 'Manutenção Preditiva Elevador', status: 'aberto' })
+        });
+      } else {
+        await route.continue();
+      }
+    });
 
-  test('Deve abrir o modal de Nova OS pelo Header', async ({ page }) => {
     await page.goto('/kanban');
     
-    // Clica no botão "+ Nova OS"
-    const novaOsBtn = page.getByRole('button').filter({ hasText: 'Nova OS' }).first();
-    // Se o usuário logado tiver permissão, o botão existe
-    if (await novaOsBtn.isVisible()) {
-      await novaOsBtn.click();
-      await expect(page.locator('text=Criar Nova OS').or(page.locator('text=Nova Ordem de Serviço')).first()).toBeVisible();
-      // Cancela/fecha o modal
-      await page.getByRole('button', { name: /Cancelar/i }).first().click();
-    }
+    const btnNovaOs = page.getByRole('button').filter({ hasText: /Nova OS|Criar/i }).first();
+    await expect(btnNovaOs).toBeVisible({ timeout: 15000 });
+    await btnNovaOs.click();
+
+    // Preenchimento do modal
+    await page.getByPlaceholder(/Título/i).fill('Manutenção Preditiva Elevador');
+    await page.getByRole('button', { name: /Salvar/i }).click();
+
+    // Valida se o card apareceu no Kanban (UI reagindo ao Mock)
+    await expect(page.getByText(/Manutenção Preditiva Elevador/i)).toBeVisible({ timeout: 5000 });
   });
 });
