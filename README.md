@@ -37,6 +37,7 @@ Acesse o frontend hospedado na Vercel: **[https://manager-os-frontend.vercel.app
 - **Conteinerização:** Docker Ready
 
 ## 🏗 Arquitetura e Engenharia
+> 🔒 **Nota de Privacidade:** O código-fonte do Backend (API em FastAPI) e a infraestrutura de banco de dados encontram-se em um repositório **privado** por diretrizes de segurança e proteção de propriedade intelectual. Toda a arquitetura e governança descritas neste documento referem-se ao motor que opera ativamente em produção na nuvem para alimentar esta interface.
 - **Backend (Python/FastAPI):** Arquitetura baseada em microsserviços lógicos, preparada para alta concorrência. Utiliza SQLAlchemy com connection pooling (`pool_recycle`) otimizado para lidar com conexões persistentes no PostgreSQL serverless (Neon.tech).
 - **Frontend (React):** Foco massivo em UX para uso em chãos de fábrica (tablets/desktops). Emprega Drag & Drop dinâmico, captura de mídia avançada e execução de modais stateful.
 
@@ -82,5 +83,6 @@ npm run dev
 
 ---
 *Projeto proprietário - Portfólio de Engenharia de Software.*
+
 
 
